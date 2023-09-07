@@ -98,7 +98,7 @@ function gotStream(mediaStream) {
   const deviceId = getSettings.deviceId;
   GetDevice(deviceId);
   const constraints = track.getConstraints();
-  console.log('Result constraints: ' + JSON.stringify(constraints));
+  // console.log('Result constraints: ' + JSON.stringify(constraints));
   if (constraints && constraints.width && constraints.width.exact) {
     widthInput.value = constraints.width.exact;
     widthOutput.textContent = constraints.width.exact;
@@ -210,7 +210,7 @@ function getMedia(constraints) {
       .then(mediaStream => {
         console.log(startTime);
         const resolveDuration = Date.now() - startTime;
-        console.log(`resolve time is:${resolveDuration}ms`);
+        console.log(`Resolve time is: ${resolveDuration}ms`);
         gotStream(mediaStream);
       })
       .catch(e => {
