@@ -114,7 +114,7 @@ function GetDevice(id){
     devices.forEach(function(device) {
 
       if(device.deviceId == id){
-          console.log(device.kind + ": " + device.label != undefined ? device.label : 'Default');
+        console.log(JSON.stringify(device));
       }
     });
   })
