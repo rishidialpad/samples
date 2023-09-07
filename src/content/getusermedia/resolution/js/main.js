@@ -193,7 +193,7 @@ function getMedia(constraints) {
       .then(mediaStream => {
         console.log(startTime);
         const resolveDuration = Date.now() - startTime;
-        console.log(`resolve time is:${resolveDuration}`);
+        console.log(`resolve time is:${resolveDuration}ms`);
         gotStream(mediaStream);
       })
       .catch(e => {
