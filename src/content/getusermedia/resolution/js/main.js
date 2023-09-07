@@ -185,8 +185,15 @@ function getMedia(constraints) {
 
   clearErrorMessage();
   videoblock.style.display = 'none';
+
+  const startTime = Date.now();
   navigator.mediaDevices.getUserMedia(constraints)
-      .then(gotStream)
+      .then(mediaStream => {
+        console.log(startTime);
+        const resolveDuration = Date.now() - startTime;
+        console.log(`resolve time is:${resolveDuration}`);
+        gotStream(mediaStream);
+      })
       .catch(e => {
         errorMessage('getUserMedia', e.message, e.name);
       });
