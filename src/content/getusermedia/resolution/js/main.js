@@ -95,6 +95,8 @@ function gotStream(mediaStream) {
   const track = mediaStream.getVideoTracks()[0];
   const getSettings = track.getSettings();
   console.log('Settings' + JSON.stringify(getSettings));
+  const deviceId = getSettings.deviceId;
+  GetDevice(deviceId);
   const constraints = track.getConstraints();
   console.log('Result constraints: ' + JSON.stringify(constraints));
   if (constraints && constraints.width && constraints.width.exact) {
@@ -104,6 +106,21 @@ function gotStream(mediaStream) {
     widthInput.value = constraints.width.min;
     widthOutput.textContent = constraints.width.min;
   }
+}
+
+function GetDevice(id){
+  navigator.mediaDevices.enumerateDevices()
+  .then(function(devices) {
+    devices.forEach(function(device) {
+
+      if(device.deviceId == id){
+          console.log(device.kind + ": " + device.label != undefined ? device.label : 'Default');
+      }
+    });
+  })
+  .catch(function(err) {
+    console.log(err.name + ": " + err.message);
+  });
 }
 
 function errorMessage(who, what) {
