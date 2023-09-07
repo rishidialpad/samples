@@ -94,7 +94,7 @@ function gotStream(mediaStream) {
   videoblock.style.display = 'block';
   const track = mediaStream.getVideoTracks()[0];
   const getSettings = track.getSettings();
-  console.log('Settings' + getSettings);
+  console.log('Settings' + JSON.stringify(getSettings));
   const constraints = track.getConstraints();
   console.log('Result constraints: ' + JSON.stringify(constraints));
   if (constraints && constraints.width && constraints.width.exact) {
